@@ -1,0 +1,18 @@
+{
+    "name": "debuqer/gitblog",
+    "description": "A simple git based blog",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Debuqer\\Gitblog\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "debuqer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
