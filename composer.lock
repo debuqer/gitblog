@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f7e84a5e20ea518394f0ec4584f43a0",
+    "content-hash": "bc6f000b261229c0152acdd8cc5461b2",
     "packages": [
         {
             "name": "bramus/router",
@@ -63,6 +63,71 @@
                 }
             ],
             "time": "2022-07-29T13:56:21+00:00"
+        },
+        {
+            "name": "league/plates",
+            "version": "v3.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/plates.git",
+                "reference": "ec07462f53d38dd4a3323e288c41bffe86e9098e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/plates/zipball/ec07462f53d38dd4a3323e288c41bffe86e9098e",
+                "reference": "ec07462f53d38dd4a3323e288c41bffe86e9098e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0|^8.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^9.5",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Plates\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Reinink",
+                    "email": "jonathan@reinink.ca",
+                    "role": "Developer"
+                },
+                {
+                    "name": "RJ Garcia",
+                    "email": "ragboyjr@icloud.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Plates, the native PHP template system that's fast, easy to use and easy to extend.",
+            "homepage": "https://platesphp.com",
+            "keywords": [
+                "league",
+                "package",
+                "templates",
+                "templating",
+                "views"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/plates/issues",
+                "source": "https://github.com/thephpleague/plates/tree/v3"
+            },
+            "time": "2023-01-19T12:24:09+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -461,7 +526,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "bramus/router": 20,
-        "symfony/http-foundation": 20
+        "symfony/http-foundation": 20,
+        "league/plates": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
