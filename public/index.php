@@ -1,14 +1,12 @@
 <?php
-
+use  \Bramus\Router\Router;
+use Debuqer\Kati\Kernel\Http;
+use Debuqer\Kati\Http\Request;
+use App\Routes\Web;
 
 // Require composer autoloader
 require __DIR__ . '/../vendor/autoload.php';
 
-// Create Router instance
-$router = new \Bramus\Router\Router();
+$kernel = new Http(new Router, new Web);
 
-$router->get('/article/(\w+)', function () {
-
-});
-
-$router->run();
+$kernel->run(Request::make());
