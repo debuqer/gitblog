@@ -18,6 +18,7 @@ class Template
     {
         if ( ! static::$engine ) {
             static::$engine = new Engine(app_path('templates'));
+            static::$engine->addFolder('layout', __TEMPLATES__.'/layout');
         }
 
         return static::$engine;

@@ -7,6 +7,7 @@ use Debuqer\Kati\Http\Router;
 define('__PUBLIC__', __DIR__);
 define('__APP__', __PUBLIC__.'/../app/');
 define('__ROUTES__', __PUBLIC__.'/../routes/');
+define('__TEMPLATES__', __APP__.'/templates/');
 
 function public_path($path)
 {
