@@ -1,4 +1,4 @@
-<?php $this->layout('base') ?>
+<?php $this->layout('layout::base') ?>
 
 <?php $this->start('content_') ?>
 	<!-- Begin Featured
