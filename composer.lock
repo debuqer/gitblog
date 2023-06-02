@@ -203,12 +203,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "86c012b4cc8dca1b03003ede87a44ffa2a15387b"
+                "reference": "295de66c3171df2bd0a3bb30e08e151df01ccccb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/86c012b4cc8dca1b03003ede87a44ffa2a15387b",
-                "reference": "86c012b4cc8dca1b03003ede87a44ffa2a15387b",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/295de66c3171df2bd0a3bb30e08e151df01ccccb",
+                "reference": "295de66c3171df2bd0a3bb30e08e151df01ccccb",
                 "shasum": ""
             },
             "require": {
@@ -272,7 +272,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-23T16:34:37+00:00"
+            "time": "2023-06-01T08:31:05+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
