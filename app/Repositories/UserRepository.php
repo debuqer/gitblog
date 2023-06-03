@@ -15,12 +15,12 @@ class UserRepository
 
     public function find($username)
     {
-        $userArticle = ArticleRepository::make()->find($username.'/info');
+        $userArticle = ArticleRepository::make()->findByAddress($username.'/'.$username.'/README');
 
         return new User([
             'username' => $username,
             'profile' => 'https://github.com/'.$username.'.png',
-            'summary' => $userArticle->title,
+            'summary' => $userArticle->content,
             'description' => $userArticle->content,
             'link' => url('/u/'.$username),
         ]);
