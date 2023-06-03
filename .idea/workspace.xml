@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ec49cb3-5dd6-4a9b-bd3b-aca0ee2bd02b" name="Default Changelist" comment="use helper methods" />
+    <list default="true" id="0ec49cb3-5dd6-4a9b-bd3b-aca0ee2bd02b" name="Default Changelist" comment="use helper methods">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,6 +80,7 @@
       <workItem from="1685602053261" duration="7366000" />
       <workItem from="1685771727112" duration="6000" />
       <workItem from="1685771769695" duration="6465000" />
+      <workItem from="1685779965197" duration="219000" />
     </task>
     <task id="LOCAL-00001" summary="added router">
       <created>1685603635212</created>
@@ -156,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685779872361</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fixing commit">
+      <created>1685780092100</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1685780092100</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +195,7 @@
     <MESSAGE value="added template engine" />
     <MESSAGE value="use helper methods" />
     <MESSAGE value="added some changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="added some changes" />
+    <MESSAGE value="fixing commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing commit" />
   </component>
 </project>
