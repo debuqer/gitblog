@@ -70,7 +70,8 @@ class ArticleRepository
 
             return new Article(['exists' => true,
                 'title' => $this->getArticleTitle($article),
-                'content' => $this->getArticleBody($article),
+                'body' => $this->getArticleBody($article),
+                'content' => $article,
                 'estimated_time' => $this->getArticleEstimatedTime($article),
                 'date' => $date,
                 'link' => url('u/'.$this->getSlug($fileName)),
