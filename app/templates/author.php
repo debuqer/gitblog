@@ -37,7 +37,7 @@
 						<img class="img-fluid img-thumb" src="assets/img/demopic/8.jpg" alt="">
 						</a>
 						<div class="card-block">
-							<h2 class="card-title"><a href="post.html"><?= \Michelf\Markdown::defaultTransform($article->title) ?></a></h2>
+							<h2 class="card-title"><a href="<?= $article->link ?>"><?= \Michelf\Markdown::defaultTransform($article->title) ?></a></h2>
               <h4 class="card-text"><?= \Michelf\Markdown::defaultTransform($article->summary) ?></h4>
             	<div class="metafooter">
 								<div class="wrapfooter">
