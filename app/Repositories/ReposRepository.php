@@ -15,7 +15,7 @@ class ReposRepository
 
     public function find($repo)
     {
-        $config = require __PUBLIC__.'/../config/repos.php';
+        $config = require root_path('config/repos.php');
         $repoConfig = $config[$repo] ?? [];
 
         return new Repo($repoConfig);

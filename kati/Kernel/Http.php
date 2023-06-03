@@ -9,7 +9,7 @@ class Http
 {
     public function run(Request $request)
     {
-        require __ROUTES__.'/web.php';
+        require routes_path('web.php');
 
         router()->run();
     }

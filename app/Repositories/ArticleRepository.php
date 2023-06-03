@@ -8,7 +8,7 @@ use App\Models\Article;
 
 class ArticleRepository
 {
-    protected static $repo = __PUBLIC__.'/../datasource';
+    protected static $repo = __ROOT__.'datasource';
 
     protected $defaultExt = '.md';
 
