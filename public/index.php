@@ -9,6 +9,12 @@ define('__APP__', __PUBLIC__.'/../app/');
 define('__ROUTES__', __PUBLIC__.'/../routes/');
 define('__TEMPLATES__', __APP__.'/templates/');
 
+
+function url($url = '')
+{
+    return 'http://'.$_SERVER['HTTP_PROTO'].$_SERVER['HTTP_HOST'].'/'.$url;
+}
+
 function public_path($path)
 {
     return __PUBLIC__.'/'.$path;
