@@ -8,6 +8,8 @@ class Request extends \Symfony\Component\HttpFoundation\Request
      */
     protected static $r;
 
+    protected $appended;
+
     public static function make(): static
     {
         if ( ! static::$r ) {
@@ -22,5 +24,23 @@ class Request extends \Symfony\Component\HttpFoundation\Request
         }
 
         return static::$r;
+    }
+
+    public function __get($name)
+    {
+        if ( str_starts_with($name, 'appended_') ) {
+            return $this->appended[$name] ?? '';
+        }
+
+        return $this->{$name};
+    }
+
+    public function __set($name, $value)
+    {
+        if ( str_starts_with($name, 'appended_') ) {
+            $this->appended[$name] = $value;
+        } else {
+            $this->{$name} = $value;
+        }
     }
 }
