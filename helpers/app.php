@@ -4,7 +4,6 @@
 use \Debuqer\Kati\Template\Template;
 use Debuqer\Kati\Http\Router;
 
-define('__PUBLIC__', __DIR__);
 define('__ROOT__', __DIR__.'/../');
 
 function root_path($path = '')
@@ -19,7 +18,7 @@ function url($url = '')
 
 function public_path($path = '')
 {
-    return __PUBLIC__.'/'.$path;
+    return root_path('public/'.$path);
 }
 
 function app_path($path = '')
@@ -39,7 +38,7 @@ function routes_path($path = '')
 
 function templates_path($path = '')
 {
-    return app_path('/templates/'.$path);
+    return root_path('templates/'.$path);
 }
 
 
