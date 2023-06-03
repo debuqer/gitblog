@@ -33,7 +33,7 @@
 				<!-- begin post -->
 				<div class="authorpostbox">
 					<div class="card">
-						<a href="author.html">
+						<a href="<?= $user->profile ?>">
 						<img class="img-fluid img-thumb" src="assets/img/demopic/8.jpg" alt="">
 						</a>
 						<div class="card-block">
@@ -42,7 +42,7 @@
             	<div class="metafooter">
 								<div class="wrapfooter">
 									<span class="meta-footer-thumb">
-									<a href="<?= url('/author/'.$user->username) ?>"><img class="author-thumb" src="<?= $user->profile ?>" alt="<?= $user->username ?>"></a>
+									<a href="<?= url('u/'.$user->username) ?>"><img class="author-thumb" src="<?= $user->profile ?>" alt="<?= $user->username ?>"></a>
 									</span>
 									<span class="author-meta">
 									<span class="post-name"><a href="<?= $user->link ?>"><?= $user->username ?></a></span><br/>
