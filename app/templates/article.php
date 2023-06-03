@@ -21,7 +21,7 @@
 				<!-- Begin Top Meta -->
 				<div class="row post-top-meta">
 					<div class="col-md-2">
-						<a href="author.html"><img class="author-thumb" src="<?= $user->profile ?>" alt="<?= $user->username ?>"></a>
+						<a href="<?= $user->link ?>"><img class="author-thumb" src="<?= $user->profile ?>" alt="<?= $user->username ?>"></a>
 					</div>
 					<div class="col-md-10">
 						<a class="link-dark" href="https://github.com/<?= $user->username  ?>"><?= $user->username  ?></a>
