@@ -8,7 +8,7 @@ use App\Models\Article;
 
 class ArticleRepository
 {
-    protected static $repo = __PUBLIC__.'/../data';
+    protected static $repo = __PUBLIC__.'/../datasource';
 
     protected $defaultExt = '.md';
 
@@ -17,41 +17,63 @@ class ArticleRepository
         return new self();
     }
 
+    public function scanDir($dir, &$results = [])
+    {
+        $files = scandir($dir);
+
+        foreach ($files as $key => $value) {
+            $real_path = realpath($dir . DIRECTORY_SEPARATOR . $value);
+            if (!is_dir($real_path)) {
+                if ( !in_array($value, ['.', '..']) ) {
+                    $results[] = $this->find($real_path);
+                }
+            } else if ($value != "." && $value != "..") {
+                $results[$value] = [];
+                $this->scanDir($real_path, $results[$value]);
+            }
+        }
+
+        return $results;
+    }
+
     public function all($dir = '')
     {
-        $items = [];
-        $files = scandir($this->getQualifiedDir($dir));
-        if ( $files ) {
-            $items = array_filter($files, function ($item) {
-                return !in_array($item, ['.', '..', 'info.md']);
-            });
+        $files = [];
+        $this->scanDir($this->getQualifiedDir($dir), $files);
 
-            $items = array_map(function ($fileName) use($dir) {
-                return $this->find($dir.'/'.$fileName);
-            }, $items);
-        }
+        $items = [];
+        array_walk_recursive($files, function ($item) use(&$items) {
+            $items[] = $item;
+        });
+
 
         return $items;
     }
 
     public function exists($fileName)
     {
-        return file_exists(static::$repo.'/'.$fileName.$this->defaultExt);
+        return file_exists($fileName);
+    }
+
+    public function findByAddress($address)
+    {
+        $fileName = realpath(static::$repo.'/'.$address.$this->defaultExt);
+
+        return $this->find($fileName);
     }
 
     public function find($fileName)
     {
-        $fileName = str_replace($this->defaultExt, '', $fileName);
         if ( $this->exists($fileName) ) {
-            $article = file_get_contents($this->getQualifiedFileName($fileName));
-            $date = date("F d Y H:i:s.", filemtime($this->getQualifiedFileName($fileName)));
+            $article = file_get_contents($fileName);
+            $date = date("F d Y H:i:s.", filemtime($fileName));
 
             return new Article(['exists' => true,
                 'title' => $this->getArticleTitle($article),
                 'content' => $this->getArticleBody($article),
                 'estimated_time' => $this->getArticleEstimatedTime($article),
                 'date' => $date,
-                'link' =>  url('article/'.$fileName),
+                'link' => url('u/'.$this->getSlug($fileName)),
             ]);
         }
 
@@ -81,10 +103,8 @@ class ArticleRepository
         return static::$repo.'/'.$dir;
     }
 
-    protected function getQualifiedFileName($fileName)
+    public function getSlug($fileName)
     {
-        $fileName = str_replace($this->defaultExt, '', $fileName);
-
-        return static::$repo.'/'.$fileName.$this->defaultExt;
+        return str_replace($this->defaultExt, '', explode('datasource/', $fileName)[1]);
     }
 }

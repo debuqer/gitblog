@@ -2,15 +2,6 @@
 use \App\Repositories\ArticleRepository;
 use \App\Repositories\UserRepository;
 
-router()->get('/a/(\w+)/(\w+)', function ($username, $articleName) {
-    $file = $username.'/'.$articleName;
-
-    $article = ArticleRepository::make()->find($file);
-    $user = UserRepository::make()->find($username);
-
-    echo template()->render('article', ['user' => $user, 'article' => $article]);
-});
-
 router()->get('/u/(\w+)', function ($username) {
     $user = UserRepository::make()->find($username);
 
@@ -18,10 +9,18 @@ router()->get('/u/(\w+)', function ($username) {
     usort($articles, function($first, $second) {
         return (int) $first->date <= $second->date;
     });
-    $user->top_articles = array_slice($articles, 0, 3);
+    $user->top_articles = $articles;
 
     echo template()->render('author', ['user' => $user]);
 });
+
+router()->get('/u/{file_name}', function ($file_name) {
+    $article = ArticleRepository::make()->findByAddress($file_name);
+    $user = UserRepository::make()->find(explode('/', $file_name)[0]);
+
+    echo template()->render('article', ['user' => $user, 'article' => $article]);
+});
+
 
 router()->get('/index', function () {
     echo template()->render('index');
