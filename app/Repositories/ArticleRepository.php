@@ -74,6 +74,7 @@ class ArticleRepository
                 'estimated_time' => $this->getArticleEstimatedTime($article),
                 'date' => $date,
                 'link' => url('u/'.$this->getSlug($fileName)),
+                'tags' => $this->getArticleTags($fileName),
             ]);
         }
 
@@ -106,5 +107,12 @@ class ArticleRepository
     public function getSlug($fileName)
     {
         return str_replace($this->defaultExt, '', explode('datasource/', $fileName)[1]);
+    }
+
+    public function getArticleTags($fileName)
+    {
+        $slug = $this->getSlug($fileName);
+
+        return explode('/', $slug);
     }
 }

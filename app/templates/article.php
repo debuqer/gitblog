@@ -41,6 +41,16 @@
 			</div>
 			<!-- End Post Content -->
 
+
+            <!-- Begin Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    <?php foreach ($article->tags as $tag): ?>
+                        <li><a href="#"><?= $tag ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <!-- End Tags -->
 		</div>
 		<!-- End Post -->
 
