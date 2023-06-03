@@ -22,6 +22,6 @@ router()->get('/u/{file_name}', function ($file_name) {
 });
 
 
-router()->get('/index', function () {
+router()->get('/', function () {
     echo template()->render('index');
 });
