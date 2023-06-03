@@ -8,7 +8,7 @@ use App\Models\Article;
 
 class ArticleRepository
 {
-    protected static $repo = __APP__.'../data';
+    protected static $repo = __PUBLIC__.'/../data';
 
     protected $defaultExt = '.md';
 
@@ -17,13 +17,21 @@ class ArticleRepository
         return new self();
     }
 
-    public function all()
+    public function all($dir = '')
     {
-        $files = scandir(static::$repo);
+        $items = [];
+        $files = scandir($this->getQualifiedDir($dir));
+        if ( $files ) {
+            $items = array_filter($files, function ($item) {
+                return !in_array($item, ['.', '..', 'info.md']);
+            });
 
-        return array_filter($files, function ($item) {
-            return $item !== '..';
-        });
+            $items = array_map(function ($fileName) use($dir) {
+                return $this->find($dir.'/'.$fileName);
+            }, $items);
+        }
+
+        return $items;
     }
 
     public function exists($fileName)
@@ -33,6 +41,7 @@ class ArticleRepository
 
     public function find($fileName)
     {
+        $fileName = str_replace($this->defaultExt, '', $fileName);
         if ( $this->exists($fileName) ) {
             $article = file_get_contents($this->getQualifiedFileName($fileName));
             $date = date("F d Y H:i:s.", filemtime($this->getQualifiedFileName($fileName)));
@@ -42,6 +51,7 @@ class ArticleRepository
                 'content' => $this->getArticleBody($article),
                 'estimated_time' => $this->getArticleEstimatedTime($article),
                 'date' => $date,
+                'link' =>  url('article/'.$fileName),
             ]);
         }
 
@@ -66,8 +76,15 @@ class ArticleRepository
         return ceil($numberOfWords / 200);
     }
 
+    protected function getQualifiedDir($dir)
+    {
+        return static::$repo.'/'.$dir;
+    }
+
     protected function getQualifiedFileName($fileName)
     {
+        $fileName = str_replace($this->defaultExt, '', $fileName);
+
         return static::$repo.'/'.$fileName.$this->defaultExt;
     }
 }
