@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="<?= url('assets/img/favicon.ico') ?>">
-    <title>Mediumish - A Medium style template by WowThemes.net</title>
+    <title><?= $title ?></title>
     <!-- Bootstrap core CSS -->
     <link href="<?= url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
     <!-- Fonts -->

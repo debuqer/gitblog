@@ -16,13 +16,14 @@ class UserRepository
     public function find($username)
     {
         $userArticle = ArticleRepository::make()->findByAddress($username.'/'.$username.'/README');
+        $resumeArticle = ArticleRepository::make()->findByAddress($username.'/'.$username.'/RESUME');
 
         return new User([
             'username' => $username,
             'profile' => 'https://github.com/'.$username.'.png',
             'summary' => $userArticle->content,
-            'description' => $userArticle->content,
-            'link' => url('/u/'.$username),
+            'resume' => $resumeArticle->content,
+            'link' => url(''),
         ]);
     }
 }

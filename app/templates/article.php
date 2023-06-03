@@ -1,4 +1,4 @@
-<?php $this->layout('layout::base') ?>
+<?php $this->layout('layout::base', ['title' => $title]) ?>
 
 <?php $this->start('content_') ?>
 <!-- Begin Article

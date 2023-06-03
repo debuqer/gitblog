@@ -1,4 +1,4 @@
-<?php $this->layout('layout::base') ?>
+<?php $this->layout('layout::base', ['title' => $title]) ?>
 
 <?php $this->start('content_') ?>
 <!-- Begin Top Author Page
@@ -13,6 +13,8 @@
 						<h1><?= $user->username ?></h1>
 						<span class="author-description"><?= $user->summary ?></span>
 					</div>
+
+                    <hr>
 					<div class="col-md-2 col-xs-12">
 						<img class="author-thumb" src="<?= $user->profile ?>" alt="<?= $user->username ?>">
 					</div>
@@ -23,7 +25,11 @@
 </div>
 <!-- End Top Author Meta
 ================================================== -->
-
+<div class="authorpage">
+    <div class="container">
+        <?= \Michelf\Markdown::defaultTransform($user->resume) ?>
+    </div>
+</div>
 <!-- Begin Author Posts
 ================================================== -->
 <div class="graybg authorpage">
@@ -33,9 +39,7 @@
 				<!-- begin post -->
 				<div class="authorpostbox">
 					<div class="card">
-						<a href="<?= $user->profile ?>">
-						<img class="img-fluid img-thumb" src="assets/img/demopic/8.jpg" alt="">
-						</a>
+						<a href="<?= $user->profile ?>"></a>
 						<div class="card-block">
 							<h2 class="card-title"><a href="<?= $article->link ?>"><?= \Michelf\Markdown::defaultTransform($article->title) ?></a></h2>
               <h4 class="card-text"><?= \Michelf\Markdown::defaultTransform($article->summary) ?></h4>
