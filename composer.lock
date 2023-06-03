@@ -399,12 +399,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "295de66c3171df2bd0a3bb30e08e151df01ccccb"
+                "reference": "de574d4beaf7b0e17776145cd52e8eea960f31f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/295de66c3171df2bd0a3bb30e08e151df01ccccb",
-                "reference": "295de66c3171df2bd0a3bb30e08e151df01ccccb",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/de574d4beaf7b0e17776145cd52e8eea960f31f0",
+                "reference": "de574d4beaf7b0e17776145cd52e8eea960f31f0",
                 "shasum": ""
             },
             "require": {
@@ -468,7 +468,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-01T08:31:05+00:00"
+            "time": "2023-06-03T15:11:12+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
