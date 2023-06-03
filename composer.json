@@ -19,6 +19,7 @@
         "bramus/router": "dev-master",
         "symfony/http-foundation": "6.4.x-dev",
         "league/plates": "v3.x-dev",
-        "michelf/php-markdown": "dev-lib"
+        "michelf/php-markdown": "dev-lib",
+        "vlucas/phpdotenv": "5.5.x-dev"
     }
 }
