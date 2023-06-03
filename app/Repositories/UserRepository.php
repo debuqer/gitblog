@@ -23,7 +23,7 @@ class UserRepository
             'profile' => 'https://github.com/'.$username.'.png',
             'summary' => $userArticle->content,
             'resume' => $resumeArticle->content,
-            'link' => url('/u/'.$username),
+            'link' => url('u/'.$username),
         ]);
     }
 }
