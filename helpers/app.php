@@ -32,9 +32,9 @@ function config_path($path = '')
     return root_path('config/'.$path);
 }
 
-function routes_path($path = '')
+function routes_path()
 {
-    return root_path('routes/'.$path);
+    return app_path('routes.php');
 }
 
 function templates_path($path = '')
