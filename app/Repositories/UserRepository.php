@@ -23,6 +23,7 @@ class UserRepository
         return new User([
             'username' => $username,
             'profile' => 'https://github.com/'.$username.'.png',
+            'summary' => $_ENV['summary'],
             'readme' => $readmeArticle->content,
             'resume' => $resumeArticle->content,
         ]);
