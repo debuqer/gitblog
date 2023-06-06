@@ -23,7 +23,7 @@ router()->get('/blog', function () {
     });
     user()->top_articles = $articles;
 
-    echo template()->render('blog', ['sotitle' => $title, 'user' => user()]);
+    echo template()->render('blog', ['title' => $title, 'user' => user()]);
 });
 
 router()->get('/blog/{query}', function ($query) {
