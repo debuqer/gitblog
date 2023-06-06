@@ -72,9 +72,10 @@ class ArticleRepository
                 'title' => $this->getArticleTitle($article),
                 'body' => $this->getArticleBody($article),
                 'content' => $article,
+                'summary' => $this->getArticlFirstWords($article, 40) . $this->getEtcDots($article, 40),
                 'estimated_time' => $this->getArticleEstimatedTime($article),
                 'date' => $date,
-                'link' => url('u/'.$this->getSlug($fileName)),
+                'link' => url('blog/'.$this->getSlug($fileName)),
                 'tags' => $this->getArticleTags($fileName),
             ]);
         }
@@ -90,6 +91,16 @@ class ArticleRepository
     public function getArticleBody($article)
     {
         return str_replace($this->getArticleTitle($article), '', $article);
+    }
+
+    public function getArticlFirstWords($article, $numOfWords = 10)
+    {
+        return implode(' ', array_slice(explode(' ', $this->getArticleBody($article)), 0, $numOfWords));
+    }
+
+    public function getEtcDots($article, $numOfWords = 10)
+    {
+        return $this->getArticlFirstWords($article, $numOfWords) === $article ? '' : ' ...';
     }
 
     public function getArticleEstimatedTime($article)

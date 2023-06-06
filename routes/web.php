@@ -3,27 +3,31 @@ use \App\Repositories\ArticleRepository;
 use \App\Repositories\UserRepository;
 use Debuqer\Kati\Http\Request;
 
-router()->before('GET', '/u/{query}', function ($query) {
-    $user = UserRepository::make()->find(explode('/', $query)[0]);
-
-    Request::make()->appended_user = $user;
+router()->before('GET', '/.*', function () {
+    Request::make()->appended_user = UserRepository::make()->getMe();
 });
 
-router()->get('/u/{query}', function ($query) {
-    if ( count(explode('/', $query)) == 1 ) {
-        $user = Request::make()->appended_user;
+router()->get('/', function () {
+    $title = user()->username;
+    $readme = user()->readme;
 
-        $articles = ArticleRepository::make()->all($user->username);
-        usort($articles, function ($first, $second) {
-            return (int)$first->date <= $second->date;
-        });
-        $user->top_articles = $articles;
+    echo template()->render('index', ['title' => $title, 'readme' => $readme]);
+});
 
-        echo template()->render('author', ['title' => $user->username, 'user' => $user]);
-    } else {
-        $user = $user = Request::make()->appended_user;
-        $article = ArticleRepository::make()->findByAddress($query);
+router()->get('/blog', function () {
+    $title = user()->username .' - Blog';
 
-        echo template()->render('article', ['title' => $article->title, 'user' => $user, 'article' => $article]);
-    }
+    $articles = ArticleRepository::make()->all('');
+    usort($articles, function ($first, $second) {
+        return (int)$first->date <= $second->date;
+    });
+    user()->top_articles = $articles;
+
+    echo template()->render('blog', ['sotitle' => $title, 'user' => user()]);
+});
+
+router()->get('/blog/{query}', function ($query) {
+    $article = ArticleRepository::make()->findByAddress($query);
+
+    echo template()->render('article', ['title' => $article->title, 'user' => user(), 'article' => $article]);
 });

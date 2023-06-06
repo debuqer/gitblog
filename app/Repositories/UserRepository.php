@@ -13,17 +13,18 @@ class UserRepository
         return new self();
     }
 
-    public function find($username)
+    public function getMe()
     {
-        $userArticle = ArticleRepository::make()->findByAddress($username.'/'.$username.'/README');
-        $resumeArticle = ArticleRepository::make()->findByAddress($username.'/'.$username.'/RESUME');
+        $username = $_ENV['username'];
+
+        $readmeArticle = ArticleRepository::make()->findByAddress('README');
+        $resumeArticle = ArticleRepository::make()->findByAddress('RESUME');
 
         return new User([
             'username' => $username,
             'profile' => 'https://github.com/'.$username.'.png',
-            'summary' => $userArticle->content,
+            'readme' => $readmeArticle->content,
             'resume' => $resumeArticle->content,
-            'link' => url('u/'.$username),
         ]);
     }
 }

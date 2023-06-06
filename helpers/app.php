@@ -3,6 +3,7 @@
 
 use \Debuqer\Kati\Template\Template;
 use Debuqer\Kati\Http\Router;
+use \Debuqer\Kati\Http\Request;
 
 define('__ROOT__', __DIR__.'/../');
 
@@ -53,4 +54,9 @@ function template()
 function router()
 {
     return Router::make();
+}
+
+function user()
+{
+    return Request::make()->appended_user;
 }
