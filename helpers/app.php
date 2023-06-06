@@ -42,6 +42,11 @@ function templates_path($path = '')
     return root_path('templates/'.$path);
 }
 
+function repo_path($path = '')
+{
+    return __ROOT__.$_ENV['repo'].$path;
+}
+
 
 /**
  * @return \League\Plates\Engine

@@ -8,8 +8,6 @@ use App\Models\Article;
 
 class ArticleRepository
 {
-    protected static $repo = __ROOT__.'datasource';
-
     protected $defaultExt = '.md';
 
     public static function make()
@@ -57,7 +55,7 @@ class ArticleRepository
 
     public function findByAddress($address)
     {
-        $fileName = realpath(static::$repo.'/'.$address.$this->defaultExt);
+        $fileName = realpath(repo_path('/'.$address.$this->defaultExt));
 
         return $this->find($fileName);
     }
@@ -113,7 +111,7 @@ class ArticleRepository
 
     protected function getQualifiedDir($dir)
     {
-        return static::$repo.'/'.$dir;
+        return repo_path('/'.$dir);
     }
 
     public function getSlug($fileName)
