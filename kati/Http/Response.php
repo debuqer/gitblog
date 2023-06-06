@@ -8,13 +8,6 @@ class Response extends \Symfony\Component\HttpFoundation\Response
 {
     protected static $r;
 
-    public static function create($content = '', $status = 200, $headers = []): static
-    {
-        static::$r = new static($content, $status, $headers);
-
-        return static::$r;
-    }
-
     public static function make(): static
     {
         if ( ! static::$r ) {

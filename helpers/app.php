@@ -14,7 +14,7 @@ function root_path($path = '')
 
 function url($url = '')
 {
-    return 'http://'.$_SERVER['HTTP_PROTO'].$_SERVER['HTTP_HOST'].'/'.$url;
+    return $_ENV['app_url'].'/'.$url;
 }
 
 function public_path($path = '')

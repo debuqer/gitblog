@@ -6,6 +6,8 @@ use Debuqer\Kati\Http\Response;
 
 router()->before('GET', '/.*', function () {
     Request::make()->appended_user = UserRepository::make()->getMe();
+
+    Response::make()->headers->remove('X-Powered-By');
 });
 
 router()->get('/', function () {
@@ -13,7 +15,8 @@ router()->get('/', function () {
     $readme = user()->readme;
 
 
-    Response::create(template()->render('index', ['title' => $title, 'readme' => $readme]), 200);
+    Response::make()->setStatusCode(200);
+    Response::make()->setContent(template()->render('index', ['title' => $title, 'readme' => $readme, 'user' => user()]));
 });
 
 router()->get('/blog', function () {
@@ -25,11 +28,13 @@ router()->get('/blog', function () {
     });
     user()->top_articles = $articles;
 
-    Response::create(template()->render('blog', ['title' => $title, 'user' => user()]));
+    Response::make()->setStatusCode(200);
+    Response::make()->setContent(template()->render('blog', ['title' => $title, 'user' => user()]));
 });
 
 router()->get('/blog/{query}', function ($query) {
     $article = ArticleRepository::make()->findByAddress($query);
 
-    Response::create(template()->render('article', ['title' => $article->title, 'user' => user(), 'article' => $article]));
+    Response::make()->setStatusCode(200);
+    Response::make()->setContent(template()->render('article', ['title' => $article->title, 'user' => user(), 'article' => $article]));
 });

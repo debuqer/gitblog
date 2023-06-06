@@ -13,7 +13,7 @@ class Http
         require routes_path();
 
         router()->run(function () {
-            echo Response::make()->getContent();
+            Response::make()->send();
         });
     }
 }
