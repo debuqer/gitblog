@@ -4,6 +4,7 @@
 namespace Debuqer\Kati\Kernel;
 
 use Debuqer\Kati\Http\Request;
+use Debuqer\Kati\Http\Response;
 
 class Http
 {
@@ -11,6 +12,8 @@ class Http
     {
         require routes_path();
 
-        router()->run();
+        router()->run(function () {
+            echo Response::make()->getContent();
+        });
     }
 }

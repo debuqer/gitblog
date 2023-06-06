@@ -2,6 +2,7 @@
 use \App\Repositories\ArticleRepository;
 use \App\Repositories\UserRepository;
 use Debuqer\Kati\Http\Request;
+use Debuqer\Kati\Http\Response;
 
 router()->before('GET', '/.*', function () {
     Request::make()->appended_user = UserRepository::make()->getMe();
@@ -11,7 +12,8 @@ router()->get('/', function () {
     $title = user()->username;
     $readme = user()->readme;
 
-    echo template()->render('index', ['title' => $title, 'readme' => $readme]);
+
+    Response::create(template()->render('index', ['title' => $title, 'readme' => $readme]), 200);
 });
 
 router()->get('/blog', function () {
@@ -23,11 +25,11 @@ router()->get('/blog', function () {
     });
     user()->top_articles = $articles;
 
-    echo template()->render('blog', ['title' => $title, 'user' => user()]);
+    Response::create(template()->render('blog', ['title' => $title, 'user' => user()]));
 });
 
 router()->get('/blog/{query}', function ($query) {
     $article = ArticleRepository::make()->findByAddress($query);
 
-    echo template()->render('article', ['title' => $article->title, 'user' => user(), 'article' => $article]);
+    Response::create(template()->render('article', ['title' => $article->title, 'user' => user(), 'article' => $article]));
 });
